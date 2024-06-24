@@ -1,4 +1,4 @@
-import WorkItem, { work } from "./WorkItem";
+import WorkItem, { work } from "../WorkItem/WorkItem";
 
 type workItemList = {
   itemList: Array<work>;

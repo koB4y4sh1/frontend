@@ -1,7 +1,7 @@
 "use client";
-import FormItem from "@/components/FormWorkItem/Form";
-import { work } from "@/components/WorkDone/WorkItem";
-import WorkItemList from "@/components/WorkDone/WorkItemList";
+import FormItem from "@/components/FormWorkItem/FormWorkItem";
+import { work } from "@/components/WorkItem/WorkItem";
+import WorkItemList from "@/components/WorkItemList/WorkItemList";
 import { useState } from "react";
 
 export default function Home() {

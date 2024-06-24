@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction } from "react";
 import { BsPersonVideo } from "react-icons/bs";
 import { GoCodeReview } from "react-icons/go";
 import { MdPreview, MdTaskAlt } from "react-icons/md";
-import { work } from "../WorkDone/WorkItem";
+import { work } from "../WorkItem/WorkItem";
 
 type useStateWorkItem = {
   newWorkItem: work,

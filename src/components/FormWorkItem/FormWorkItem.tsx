@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { work } from "../WorkDone/WorkItem";
-import FormWorkItem from "./WorkItem";
+import FormWorkItem from "../EditWorkItem/EditWorkItem";
+import { work } from "../WorkItem/WorkItem";
 
 type addWorkItem = {
   addWorkItemOnClick: (work: work) => void;
