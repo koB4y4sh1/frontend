@@ -4,30 +4,40 @@ import { Dispatch, SetStateAction } from "react";
 import { BsPersonVideo } from "react-icons/bs";
 import { GoCodeReview } from "react-icons/go";
 import { MdPreview, MdTaskAlt } from "react-icons/md";
-import { work } from "../WorkItem/WorkItem";
+
+export type workType = "WORK" | "MEETING" | "REVIEW" | "INSPECTION";
+
+export type work = {
+  type: workType;
+  content: string;
+  time: string;
+};
 
 type useStateWorkItem = {
-  newWorkItem: work,
-  setNewWorkItem: Dispatch<SetStateAction<work>>;
-}
-const FormWorkItem = ({newWorkItem,setNewWorkItem}:useStateWorkItem): JSX.Element => {
+  workItem: work;
+  setWorkItem: Dispatch<SetStateAction<work>>;
+};
 
+const EditWork = ({
+  workItem,
+  setWorkItem,
+}: useStateWorkItem): JSX.Element => {
   const onChangeType = (e: any) => {
-    const workitem = { ...newWorkItem };
-    workitem.type = e.target.value;
-    setNewWorkItem(workitem);
+    const newWorkitem = { ...workItem };
+    newWorkitem.type = e.target.value;
+    setWorkItem(newWorkitem);
   };
 
   const onChangeContent = (e: any) => {
-    const workitem = { ...newWorkItem };
-    workitem.content = e.target.value;
-    setNewWorkItem(workitem);
+    const newWorkitem = { ...workItem };
+    newWorkitem.content = e.target.value;
+    setWorkItem(newWorkitem);
   };
 
   const onChangeTime = (e: any) => {
-    const workitem = { ...newWorkItem };
-    workitem.time = e.target.value;
-    setNewWorkItem(workitem);
+    const newWorkitem = { ...workItem };
+    newWorkitem.time = e.target.value;
+    setWorkItem(newWorkitem);
   };
 
   let statusClassName = {
@@ -37,7 +47,7 @@ const FormWorkItem = ({newWorkItem,setNewWorkItem}:useStateWorkItem): JSX.Elemen
     icon: <></>,
   };
 
-  switch (newWorkItem.type) {
+  switch (workItem.type) {
     case "WORK":
       statusClassName.text = "ワーク";
       statusClassName.textColor = "text-emerald-500 dark:text-emerald-300";
@@ -93,8 +103,9 @@ const FormWorkItem = ({newWorkItem,setNewWorkItem}:useStateWorkItem): JSX.Elemen
           </select>
           <input
             type="text"
-            className="text-sm bg-wite dark:bg-gray-800 dark:text-white"
+            className="text-sm bg-wite dark:bg-gray-800 dark:text-white dark:placeholder-white"
             placeholder="作業内容を入力"
+            value={workItem.content}
             onChange={onChangeContent}
           />
         </div>
@@ -104,6 +115,7 @@ const FormWorkItem = ({newWorkItem,setNewWorkItem}:useStateWorkItem): JSX.Elemen
           <input
             type="time"
             className="text-sm bg-wite dark:bg-gray-800 dark:text-white"
+            value={workItem.time}
             onChange={onChangeTime}
           />
         </div>
@@ -112,4 +124,4 @@ const FormWorkItem = ({newWorkItem,setNewWorkItem}:useStateWorkItem): JSX.Elemen
   );
 };
 
-export default FormWorkItem;
+export default EditWork;

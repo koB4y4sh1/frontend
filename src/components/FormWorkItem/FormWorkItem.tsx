@@ -1,10 +1,17 @@
 "use client";
 import { useEffect, useState } from "react";
-import FormWorkItem from "../EditWorkItem/EditWorkItem";
-import { work } from "../WorkItem/WorkItem";
+import FormWorkItem from "../WorkItem/Work/EditWork";
 
 type addWorkItem = {
   addWorkItemOnClick: (work: work) => void;
+};
+
+export type workType = "WORK" | "MEETING" | "REVIEW" | "INSPECTION";
+
+export type work = {
+  type: workType;
+  content: string;
+  time: string;
 };
 
 const defaultValeu: work = {
@@ -39,8 +46,8 @@ const FormItem = (props: addWorkItem): JSX.Element => {
         <>
           <form id="newWorkItem">
             <FormWorkItem
-              newWorkItem={newWorkItem}
-              setNewWorkItem={setNewWorkItem}
+              workItem={newWorkItem}
+              setWorkItem={setNewWorkItem}
             ></FormWorkItem>
           </form>
           <div
